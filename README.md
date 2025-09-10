@@ -1,4 +1,4 @@
-# 📘 Teoría de las Decisiones
+# Teoría de las Decisiones
 
 Este repositorio reúne materiales, resúmenes, implementaciones y ejercicios de la materia **Teoría de las Decisiones** (UTDT, 2do semestre 2025).  
 
