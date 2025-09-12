@@ -1,0 +1,204 @@
+\documentclass{article}
+\usepackage{graphicx, soul, amsmath, amssymb, multirow, array, colortbl, float, pgfplots}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[a4paper, margin=0.8in]{geometry}
+\usepackage{fancyhdr} % Paquete para encabezados y pies de página
+\usepackage[utf8]{inputenc}
+\pgfplotsset{compat=1.18}
+
+% Configuración de soul
+\setul{0.5ex}{0.3ex}
+
+% Comandos personalizados
+\newcommand{\ulcolor}[2][Red]{\setulcolor{#1}\ul{#2}}
+\newcommand*\sepline{%
+  \begin{center}
+    \rule[1ex]{.5\textwidth}{.5pt}
+  \end{center}}
+
+% Configuración de encabezado y pie de página para todas las páginas
+\fancypagestyle{main}{
+    \fancyhf{} % Limpia encabezados y pies de página
+    \fancyhead[C]{Juan Ignacio Elosegui} % Encabezado centrado con tu nombre
+    \fancyfoot[R]{\thepage} % Número de página alineado a la derecha en el pie
+    \renewcommand{\headrulewidth}{0.4pt} % Línea bajo el encabezado
+    \renewcommand{\footrulewidth}{0pt}   % Sin línea en el pie de página
+}
+
+% Aplicar el estilo por defecto a todo el documento
+\pagestyle{main}
+
+\title{Trabajo Práctico 1 - Teoría de Juegos}
+\author{Juani Elosegui}
+\date{Diciembre 2024}
+
+\begin{document}
+    \maketitle
+    
+    \section{¿Verdadero o falso? Discuta las siguientes afirmaciones.}
+        \begin{itemize}
+            \item \textbf{Falso.} Pueden sobrevivir las estrategias débilmente dominadas, las cuales pueden ser un equilibrio de Nash también. Por lo tanto, no es único.
+            \item \textbf{Falso.} Sí pueden ser todas racionalizables, como puede ser el caso en el que no hay estrategias estrictamente dominadas. 
+        \end{itemize}
+    \section{Subastas}
+        \subsection*{Inciso (a)}
+            \begin{table}[H]
+                \begin{tabular}{|c|c|c|c|c|}
+                            \hline
+                                    & Alto & Medio & Bajo \\ \hline
+                            Alto    & 5, 5 & 10, 0 & 10, 0 \\ 
+                            Medio   & 0, 10 & 15, 15 & 30, 0 \\
+                            Bajo    & 0, 10 & 0, 30 & 20, 20 \\ \hline
+                \end{tabular}
+            \end{table}
+        \subsection*{Inciso (b)}
+            Los equilibrios de Nash son: EN = \{(Alto, Alto); (Medio, Medio)\}
+            \begin{table}[H]
+                \begin{tabular}{|c|c|c|c|c|}
+                            \hline
+                                    & Alto & Medio & Bajo  \\ \hline
+                            Alto    & \ulcolor[Red]{5}, \ulcolor[Blue]{5} & 10, 0 & 10, 0 \\ 
+                            Medio   & 0, 10 & \ulcolor[Red]{15}, \ulcolor[Blue]{15} & 30, 0 \\
+                            Bajo    & 0, 10 & 0, \ulcolor[Blue]{30} & \ulcolor[Red]{20}, 20 \\ \hline
+                \end{tabular}
+            \end{table}
+        \subsection*{Inciso (c)}
+            En caso de empate, gana Luis siempre.
+            \begin{table}[H]
+                \begin{tabular}{|c|c|c|c|c|}
+                            \hline
+                                    & Alto & Medio & Bajo \\ \hline
+                            Alto    & 10, 0 & 10, 0 & 10, 0 \\ 
+                            Medio   & 0, 10 & 30, 0 & 30, 0 \\
+                            Bajo    & 0, 10 & 0, 30 & 40, 0 \\ \hline
+                \end{tabular}
+            \end{table}
+        \subsection*{Inciso (d)}
+            El equilibrio de Nash es EN = \{(Alto, Alto)\}.
+            \begin{table}[H]
+                \begin{tabular}{|c|c|c|c|c|}
+                    \hline
+                            & Alto & Medio & Bajo \\ \hline
+                    Alto    & \ulcolor[Red]{10}, \ulcolor[Blue]{0} & 10, \ulcolor[Blue]{0} & 10, \ulcolor[Blue]{0} \\ 
+                    Medio   & 0, \ulcolor[Blue]{10} & \ulcolor[Red]{30}, 0 & 30, 0 \\
+                    Bajo    & 0, 10 & 0, \ulcolor[Blue]{30} & \ulcolor[Red]{40}, 0 \\ \hline
+                \end{tabular}
+            \end{table}
+        \subsection*{Inciso (e)}
+            Usaría el formato del inciso (b), porque van a jugar el equilibrio de Nash. Y el equilibrio de Nash en ese formato (15, 15) hacen que se subaste por más plata que en el segundo formato de la moneda (10, 0).
+    \section{Estrategias continuas}
+        \subsection*{Inciso (a)}
+            Expando y simplifico las funciones de utilidad: \\
+            \(u_{1}(s_{1}, s_{2}) = (s_{1}+s_{2})+(8-s_{1})+(8-s_{1})(s_{1}+s_{2})\) \\
+            \(\implies u_{1}(s_{1}, s_{2}) = (s_{1}+s_{2})+8-s_{1}+8s_{1}+8s_{2}-s_{1}^{2}-s_{1}s_{2}\) \\
+            \(\implies u_{1}(s_{1}, s_{2}) = s_{2}+8+8s_{1}+8s_{2}-s_{1}^{2}-s_{1}s_{2}\) \\
+            \\
+            \(u_{2}(s_{1}, s_{2}) = (s_{1}+s_{2})+(8-s_{2})+(8-s_{2})(s_{1}+s_{2})\) \\
+            \(\implies u_{2}(s_{1}, s_{2}) = s_{1}+s_{2}+8-s_{2}+(8-s_{2})(s_{1}+s_{2})\) \\
+            \(\implies u_{2}(s_{1}, s_{2}) = s_{1}+s_{2}+8-s_{2}+8s_{1}+8s_{2}-s_{1}s_{2}-s_{2}^{2}\) \\
+            \(\implies u_{2}(s_{1}, s_{2}) = s_{1}+8+8s_{1}+8s_{2}-s_{2}^{2}-s_{1}s_{2}\) \\
+            \\
+            Derivo una respecto de \(s_{1}\) y la otra respecto de \(s_{2}\): \\
+            \(\frac{\partial}{\partial s_{1}}u_{1}(s_{1}, s_{2}) = 0 + 0 + 8 + 0 -2s_{1} - s_{2}\) \\
+            \(\therefore \frac{\partial}{\partial s_{1}}u_{1}(s_{1}, s_{2}) = 8 -2s_{1} - s_{2}\) \\
+            \\
+            \(\frac{\partial}{\partial s_{2}}u_{2}(s_{1}, s_{2}) = 0 + 0 + 0 + 8 - 2s_{2} - s_{1}\) \\
+            \(\therefore \frac{\partial}{\partial s_{2}}u_{2}(s_{1}, s_{2}) = 8 - 2s_{2} - s_{1}\) \\
+            \\
+            Si igualo las dos expresiones a cero: \\
+            \(\frac{\partial}{\partial s_{1}}u_{1}(s_{1}, s_{2}) = 0\) \\
+            \(\frac{\partial}{\partial s_{2}}u_{2}(s_{1}, s_{2}) = 0\) \\
+            \\
+            \(\frac{\partial}{\partial s_{1}}u_{1}(s_{1}, s_{2}) = 0\) \\
+            \(\implies 8 -2s_{1} - s_{2} = 0\) \\
+            \(\implies 8 -2s_{1} = s_{2}\) \\
+            \(\implies s_{2} = -8+2s_{1}\) \\
+            \(\therefore s_{2} = 8-2s_{1}\) (1) \\
+            \\
+            \(\frac{\partial}{\partial s_{2}}u_{1}(s_{1}, s_{2}) = 0\) \\
+            \(\implies 8 - 2s_{2} - s_{1} = 0\) \\
+            \(\implies 8 - 2s_{2} = s_{1}\) \\
+            \(\therefore s_{1} = 8 - 2s_{2}\) (2)\\
+            \\
+            Entonces, reemplazo en las ecuaciones a las variables \(s_{1} \wedge s_{2}\) en las funciones (1) y (2): \\
+            \(s_{2} = 8-2s_{1}\) \\
+            \(\implies s_{2} = 8-2(8-2s_{2})\) \\
+            \(\implies s_{2} = 8-16+4s_{2}\) \\
+            \(\implies s_{2} = -8+4s_{2}\) \\
+            \(\implies 8 = 3s_{2}\) \\
+            \(\implies \frac{8}{3} = s_{2}\) \\
+            \(\implies s_{2}^{*} = \frac{8}{3}\) \\
+            \\
+            \(s_{1} = 8 - 2(8-2s_{1})\)\\
+            \(\implies s_{1} = 8-16+4s_{1}\)\\
+            \(\implies s_{1} = -8+4s_{1}\)\\
+            \(\implies 8 = 4s_{1}-s_{1}\)\\
+            \(\implies 8 = 3s_{1}\)\\
+            \(\implies \frac{8}{3} = s_{1}\)\\
+            \(\therefore s_{1}^{*} = \frac{8}{3}\)\\
+            \\
+            El equilibrio de Nash es = \{(8/3, 8/3)\}. \\
+            \\
+            Lo que hice fue lo siguiente:
+            \begin{enumerate}
+                \item Simplificar las fórmulas de utilidad (opcional)
+                \item Derivarlas respecto de $s_{1}$ y $s_{2}$.
+                \item Igualar las derivadas a cero (por el teorema de Lagrange).
+                \item Despejar $s_{1}^{*}$ y $s_{2}^{*}$ reemplazándolas una dentro de otra.
+                    \subitem Este será el equilibrio de Nash porque será donde ambos jugadores maximizan su utilidad.
+            \end{enumerate}
+        \subsection*{Inciso (b)}
+            Acá tengo que comparar cuál es mayor: \((u_{1}(s_{1}^{*}, s_{2}^{*}), u_{2}(s_{1}^{*}, s_{2}^{*}))\) o \((u_{1}(4, 4), u_{2}(4, 4))\). \\
+            \\
+            \(u_{1}(s_{1}^{*}, s_{2}^{*}) = (s_{1}^{*}+s_{2}^{*})+(8-s_{1}^{*})+(8-s_{1}^{*})(s_{1}^{*}+s_{2}^{*})\) \\
+            \(\implies u_{1}(s_{1}^{*}, s_{2}^{*}) = (\frac{8}{3}+\frac{8}{3})+(8-\frac{8}{3})+(8-\frac{8}{3})(\frac{8}{3}+\frac{8}{3})\) \\
+            \(\implies u_{1}(s_{1}^{*}, s_{2}^{*}) = \frac{16}{3}+(\frac{24}{3}-\frac{8}{3})+(\frac{24}{3}-\frac{8}{3})(\frac{16}{3})\) \\
+            \(\implies u_{1}(s_{1}^{*}, s_{2}^{*}) = \frac{16}{3}+\frac{16}{3}+(\frac{16}{3})(\frac{16}{3})\) \\
+            \(\implies u_{1}(s_{1}^{*}, s_{2}^{*}) = \frac{32}{3}+(\frac{16}{3} \cdot \frac{16}{3})\) \\
+            \(\implies u_{1}(s_{1}^{*}, s_{2}^{*}) = \frac{32}{3}+\frac{256}{3}\) \\
+            \(\implies u_{1}(s_{1}^{*}, s_{2}^{*}) = \frac{288}{3}\) \\
+            \(\therefore u_{1}(s_{1}^{*}, s_{2}^{*}) = 96\) \\
+            \\
+            \(u_{2}(s_{1}^{*}, s_{2}^{*}) = (\frac{16}{3})+(\frac{16}{3})+(\frac{16}{3})(\frac{16}{3})\) \\
+            \(\therefore u_{2}(s_{1}^{*}, s_{2}^{*}) = 96\) \\
+            \\
+            \(\implies (u_{1}(s_{1}^{*}, s_{2}^{*}), u_{2}(s_{1}^{*}, s_{2}^{*})) = (96, 96)\) \\
+            \\
+            \(u_{1}(4, 4) = (4+4)+(8-4)+(8-4)(4+4)\) \\
+            \(\implies u_{1}(4, 4) = (8)+(4)+(4)(8)\) \\
+            \(\implies u_{1}(4, 4) = 8+4+4 \cdot 8\) \\
+            \(\implies u_{1}(4, 4) = 12+ 32\) \\
+            \(\therefore u_{1}(4, 4) = 44\) \\
+            \\
+            \(u_{2}(4, 4) = (4+4)+(8-4)+(8-4)(4+4)\) \\
+            \(\therefore u_{2}(4, 4) = 44\) \\
+            \\
+            \(\implies (u_{1}(4, 4), u_{2}(4, 4)) = (44, 44)\) \\
+            \\
+            $\therefore$ Sí, estarían peor que en el equilibrio de Nash, porque les genera menor utilidad que en ese equilibrio.
+    \section{Búsqueda de equilibrios}
+        \subsection*{Inciso (a)}
+            El jugador 1 tiene una estrategia estrictamente dominante (que es C), pero no es el caso del jugador 2, este no tiene estrategias estrictamente dominantes. Si bien, para el jugador 2, $a$ domina estrictamente a $c$, no se cumple que $a$ domine estrictamente a $b$.
+            \begin{table}[H]
+                \begin{tabular}{|c|c|c|c|c|}
+                    \hline
+                        & a & b & c \\ \hline
+                    A & 1, \ulcolor[blue]{1} & 0, 0 & -1, 0 \\ 
+                    B & 0, 0 & 0, \ulcolor[blue]{6} & 10, -1 \\
+                    C & \ulcolor[red]{2}, \ulcolor[blue]{0} & \ulcolor[red]{10}, -1 & \ulcolor[red]{11}, -1 \\ \hline
+                \end{tabular}
+            \end{table}
+            $\therefore$ No hay equilibrio en estrategias estrictamente dominadas.
+        \subsection*{Inciso (b)}
+            Sí, para el jugador 1 puedo descartar las estrategias A y B:
+            \begin{table}[H]
+                \begin{tabular}{|c|c|c|c|c|}
+                    \hline
+                        & A & B & C \\ \hline
+                    C & \ulcolor[red]{2}, \ulcolor[blue]{0} & \ulcolor[red]{10}, -1 & \ulcolor[red]{11}, -1 \\ \hline
+                \end{tabular}
+            \end{table}
+            Como el jugador 2 sabe que el jugador 1 va a eliminar A y B, decidirá jugar el equilibrio de Nash, que es el mismo equilibrio bajo el concepto de eliminación iterativa de estrategias estrictamente dominadas. Este es 
+        
+
+\end{document}

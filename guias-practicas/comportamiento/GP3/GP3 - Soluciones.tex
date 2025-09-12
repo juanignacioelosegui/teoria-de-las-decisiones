@@ -1,0 +1,214 @@
+\documentclass{article}
+\usepackage{graphicx, soul}
+\usepackage[dvipsnames]{xcolor}
+
+\setul{0.5ex}{0.3ex}
+
+\newcommand{\ulcolor}[2][Red]{\setulcolor{#1}\ul{#2}}
+\newcommand*\sepline{%
+  \begin{center}
+    \rule[1ex]{.5\textwidth}{.5pt}
+  \end{center}}
+
+\title{Guía Práctica 3 - Comportamiento (Resuelto)}
+\author{Juani Elosegui}
+\date{Noviembre 2024}
+
+\begin{document}
+    
+    \maketitle
+
+    \section*{\underline{Ejercicio 1}}
+        \textbf{Datos:}
+        \begin{itemize}
+            \item Apuesta 1:
+            
+            Opción A: Obtener \$1.000.000 seguro. 
+            
+            Opción B: Obtener \$1.000.000 con 98\% de probabilidad, \$2.500.000 con 1\% de probabilidad ó \$0 con 1\% de probabilidad.
+            \item Apuesta 2:
+
+            Opción A: Obtener \$1.000.000 con 2\% de probabilidad o \$0 con 98\% de probabilidad.
+
+            Opción B: Obtener \$2.500.000 con 1\% de probabilidad o \$0 con 99\% de probabilidad.
+        \end{itemize}
+        \textbf{Demuestre que si alguien elige A en la apuesta 1 y B en la apuesta 2, entonces no existe ninguna función de utilidad que pueda explicar sus preferencias mediante EUT}
+        \\
+        \\
+        El bienestar de la gente es algo totalmente subjetivo -o, técnicamente, algo logarítmico- ya que depende en cómo cambia la riqueza de las personas.
+        \\
+        Podemos ver que en la primera apuesta, la gente suele fatalizar la probabilidad de que no reciba dinero en absoluto. Parece ser que ese 1\% suena como algo terrible para ellos. Esto sucede porque la gente sobreestima las probabilidades bajas, y subestima las probabilidades altas. Estas probabilidades tienen un peso psicológico que distorsiona su decisión. Por eso, se espera que elija la opción A, donde se obtiene \$1.000.000 seguro.
+        \\
+        \\
+        La teoría de la utilidad esperada establece que los individuos eligen la opción que maximiza la utilidad esperada. Esto se expresa como: \(\sum_{i}p_{i} \cdot u(x_{i})\). Si calculásemos las utilidades esperadas de las opciones que elige de la apuesta 1 tenemos que:
+        \[EUT_{1A}:u(1.000.000)\]
+        \[EUT_{1B}:0,98 \cdot u(1.000.000) + 0,01 \cdot u(2.500.000) + 0,01 \cdot u(0)\]
+        Si calculamos la EUT de la apuesta 2:
+        \[EUT_{2A}: 0,02 \cdot u(1.000.000) + 0,98 \cdot u(0)\]
+        \[EUT_{2B}: 0,01 \cdot u(2.500.000) + 0,99 \cdot u(0)\]
+        \textit{COMENTARIO: No conocemos la función de utilidad, por eso directamente la denotamos como $u(.)$}
+        \\
+        \\
+        Si sabemos que una persona elige A en la apuesta 1, quiere decir que:
+        \[EUT_{1A} > EUT_{1B}\]
+        \[u(1.000.000) > 0,98 \cdot u(1.000.000) + 0,01 \cdot u(2.500.000) + 0,01 \cdot u(0)\]
+        \[0,02 \cdot u(1.000.000) > 0,01 \cdot u(2.500.000) + 0,01 \cdot u(0)\]
+        \\
+        Si sabemos también que una persona elige B en la apuesta 2, quiere decir que:
+        \[EUT_{2B} > EUT_{2A}\]
+        \[0,01 \cdot u(2.500.000) + 0,99 \cdot u(0) > 0,02 \cdot u(1.000.000) + 0,98 \cdot u(0)\]
+        \[0,01 \cdot u(2.500.000) + 0,01 \cdot u(0) > 0,02 \cdot u(1.000.000)\]
+        \\
+        De las desigualdades despejadas, no se pueden cumplir las dos en simultáneo, lo que nos lleva a una contradicción. Esto demuestra que, cuando se habla de probabilidades o sesgos psicológicos, las funciones de utilidad a veces dejan de tomar papeles relevantes.
+        \\
+        \\
+        Se justifica bien con la \emph{paradoja de Allais}.
+
+    \section*{\underline{Ejercicio 2}}
+        \textbf{Datos:}
+        \begin{itemize}
+            \item Se tienen 12 bolitas: 4 son \ulcolor[blue]{azules} y las 8 restantes son \ulcolor[green]{verdes} o \ulcolor[purple]{violetas}.
+            \item Se saca al azar una bolita de esta urna y se presentan las dos apuestas:
+            \item Apuesta 1:
+
+            Opción A: ganar \$1.000.000 si la bolita es \ulcolor[blue]{azul}.
+
+            Opción B: ganar \$1.000.000 si la bolita es \ulcolor[green]{verde}.
+            \item Apuesta 2:
+
+            Opción A: ganar \$1.000.000 si la bolita es \ulcolor[blue]{azul} o \ulcolor[purple]{violeta}.
+
+            Opción B: ganar \$1.000.000 si la bolita es \ulcolor[green]{verde} o \ulcolor[purple]{violeta}.
+        \end{itemize}
+        \textbf{Demuestre que si alguien elige A en la apuesta 1 y B en la apuesta 2, entonces no existe ninguna función de utilidad que pueda explicar sus preferencias mediante EUT}
+        \\
+        \\
+        Este inciso se puede justificar muy bien con la \emph{paradoja de Ellsberg}. La gente no parece pesar sus decisiones por la probabilidad de ocurrencia de los eventos (no calcula utilidades esperadas).
+        \\
+        \\
+        Calculemos qué fue lo que pasó para que veamos que, en efecto, sí sucede una paradoja.
+        \\
+        La teoría de la utilidad esperada establece que los individuos eligen la opción que maximiza la utilidad esperada. Esto se expresa como: \(\sum_{i}p_{i} \cdot u(x_{i})\). Si calculásemos las utilidades esperadas de las opciones que elige de la apuesta 1 tenemos que:
+        \[EUT_{1A}: \frac{4}{12} \cdot u(1.000.000)\]
+        \[EUT_{1B}: \frac{8 - x_{violetas}}{12} \cdot u(1.000.000)\]
+        Si calculamos la EUT de la apuesta 2:
+        \[EUT_{2A}: \frac{4}{12} \cdot u(1.000.000) + \frac{8-y_{verdes}}{12} \cdot u(1.000.000)\]
+        \[EUT_{2B}: \frac{8-x_{violetas}}{12} \cdot u(1.000.000) + \frac{8-y_{verdes}}{12} \cdot u(1.000.000)\]
+        Si sabemos que eligió dos veces la opción A, no existe ninguna función de utilidad posible que satisfaga las condiciones.
+        \\
+        \\
+        \textit{\ulcolor[red]{Me debería esmerar en hacer alguna explicación con cuentas más fácil. De todas formas, no entendí mucho el PDF del pizarrón. Preguntarle a Mathi o a alguien más.}}
+
+\sepline
+
+    \section*{\underline{Ejercicio 1}}
+        \textbf{Datos:}
+        \begin{itemize}
+            \item Una persona recibe un cheque de \$1.900, y se le presentan dos opciones:
+            
+            Opción A: terminar con \$1.950 seguro.
+
+            Opción B: terminar con \$1.800 con una probabilidad del 20\% o terminar con \$2.000 con una probabilidad del 80\%.
+        \end{itemize}
+        \textbf{Calcule el valor monetario esperado de cada opción y la decisión óptima según EMVT}
+        \\
+        \\
+        \[EMV_{A}: 1950\]
+        \[EMV_{B}: 0,2 \cdot 1.800 + 0,8 \cdot 2.000\]
+        \[EMV_{B}: 1.960\]
+        Como $EMV_{B} > EMV_{A}$, la decisión óptima según EMVT es elegir la opción B.
+        \\
+        \\
+        \textbf{Calcule la utilidad esperada de cada opción y la decisión óptima según EUT para un agente cuya función de utilidad es \(u(v)=\log_{10} (v+1)\)}
+        \\
+        \\
+        \[EU_{A}: u(1950) = \log_{10}(1.950 + 1)\]
+        \[EU_{A}: u(1.950) = \log_{10}(1.951)\]
+        \[EU_{A}: u(1.950) \approx 3,2902\]
+        \\
+        \[EU_{B}: u(.) = 0,2 \cdot \log_{10}(1.800 + 1) + 0,8 \cdot \log_{10}(2.000 + 1)\]
+        \[EU_{B}: u(.) = 0,2 \cdot \log_{10}(1.801) + 0,8 \cdot \log_{10}(2.001)\]
+        \[EU_{B}: u(.) \approx 3,2921\]
+        \\
+        Como \(EU_{B} > EU_{A}\), la decisión óptima sigue siendo la opción B.
+        \\
+        \\
+        \textbf{Calcule el valor psicológico esperado de cada opción y la decisión predicha según PT asumiendo que la función de utilidad tiene una raíz quinta para las ganancias, una raíz cuadrada para las pérdidas, y que la función de peso decisional es \(\pi(p) = \frac{1}{e^{(ln(\frac{1}{p})^{0,7})}}\)}
+        \\
+        \\
+        \[v(x) = \left\{\begin{array}{lcc} x^{\frac{1}{5}} & si & R \geq V \\ \\ -|x|^{\frac{1}{2}} & si & R < V\end{array} \right.\]
+        La rama de arriba es la ganancia; la de abajo, las pérdidas.
+        \\
+        \\
+        Los valores psicológicos (PV) son:
+        \[PV_{A}: v(1.950)\]
+        ¿Qué función usamos? Este es un evento probable -seguro, por cierto-, por lo que vamos a usar la función de las ganancias:
+        \[PV_{A}: v(1.950) = 1.950^{\frac{1}{5}}\]
+        \[PV_{A}: v(1.950) \approx 4,55\]
+        \\
+        \[PV_{B}: \pi(0,2) \cdot v(1.800) + \pi(0,8) \cdot v(2.000)\]
+        \[PV_{B} \approx 4,92\]
+        \textit{COMENTARIO: Notar que no usamos la rama de las pérdidas, ya que todas son interpretadas como ganancias netas.}
+        \\
+        \\
+        \textbf{¿Cambia la respuesta al punto anterior si la persona recibía un cheque de \$2.000?}
+        \\
+        \\
+        Si recibimos un cheque de \$2.000, y después nos dicen que nos van a terminar dando \$1.950; no sólo nos cagaron, si no que perdimos \$50. Ahora sí vamos a usar rama de las pérdidas.
+        \\
+        \[PV_{A}: v(-50) = -|-50|^{\frac{1}{2}}\]
+        \[PV_{A}: v(-50) \approx 7,07\]
+        \\
+        \[PV_{B}: v(-200), v(-0) = \pi(0,2) \cdot v(-200) + \pi(0,8) \cdot v(-0)\]
+        \[PV_{B}: v(-200), v(-0) \approx -3,45\]
+        Conclusión: sí cambia. Nunca fui de muchas palabras.
+    \section*{Ejercicio 2}
+        \textbf{Datos:}
+        \begin{itemize}
+            \item Pedro interpreta a las pérdidas como una \(x^{\frac{1}{2}}\) y a las ganancias como una \(x^{\frac{1}{5}}\).
+            \item Su función de pesos decisionales es \(\pi(p) = \frac{1}{e^{(ln(\frac{1}{p})^{0,7})}}\).
+            \item Situación A)
+
+            Víctor le regala a Pedro \$100. Después, lo invita a apostar: gana \$100 más con total seguridad como opción 1, o gana \$200 más con una probabilidad del 80\% como opción 2.
+
+            \item Situación B)
+
+            Víctor le regala \$300. Después, lo invita a apostar: pierde \$200 con total seguridad como opción 1, o pierde los \$300 con una probabilidad del 20\% como opción 2.
+        \end{itemize}
+        \textbf{¿Qué elige Pedro en cada escenario?}
+        \\
+        \\
+        Calculo el valor psicológico de las dos opciones en la situación a):
+        \[PV_{A1}: v(100 + 100)\]
+        \[PV_{A1}: v(200)\]
+        \[PV_{A1}: 200^{\frac{1}{5}}\]
+        \textit{COMENTARIO: Notar que no tenemos pérdidas, sólo usamos la rama de la función partida para las ganancias netas}.
+        \[PV_{A1} \approx 2,891\]
+        \\
+        \[PV_{A2}: \pi(0,8) \cdot v(100 + 200)\]
+        \[PV_{A2}: \pi(0,8) \cdot v(300)\]
+        \[PV_{A2}: \frac{1}{e^{(ln(\frac{1}{0,8})^{0,7})}} \cdot 300^{\frac{1}{5}}\]
+        \[PV_{A2} \approx 3,061\]
+        Como \(PV_{A2} > PV_{A1}\), Pedro optará por la opción 1.
+        \\
+        \textit{COMENTARIO: si fueran iguales en términos aproximados de valor psicológico, elige cualquiera de las dos. Es una pelotudez lo que estoy diciendo, pero es un detalle que me di cuenta.}
+        \\
+        \\
+        Calculo el valor psicológico de las dos opciones en la situación b):
+        \[PV_{B1}: v(300 - 200)\]
+        \[PV_{B1}: v(100)\]
+        \[PV_{B1}: 100^{\frac{1}{5}}\]
+        \[PV_{B1} \approx 2,51\]
+        \\
+        \[PV_{B2}: \pi(0,2) \cdot v(300 - 300)\]
+        \[PV_{B2}: \frac{1}{e^{(ln(\frac{1}{0,2})^{0,7})}} \cdot v(0)\]
+        \[PV_{B2}: \frac{1}{e^{(ln(\frac{1}{0,2})^{0,7})}} \cdot 0^{\frac{1}{5}}\]
+        \[PV_{B2} = 0\]
+        Pedro elige la opción 1 también.
+        \\
+        \textit{\ulcolor[red]{Preguntar. Tengo más dudas en este último que Ricky Martin a los 15.}}
+        \\
+        \\
+        Por lo tanto, la opción correcta es la A) Elige la opción 1 en ambas situaciones.
+
+\end{document}

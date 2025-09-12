@@ -1,0 +1,197 @@
+\documentclass{article}
+\usepackage{graphicx, soul, amsmath, amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[a4paper, margin=0.8in]{geometry}
+\usepackage{fancyhdr} % Paquete para encabezados y pies de página
+
+% Configuración de soul
+\setul{0.5ex}{0.3ex}
+
+% Comandos personalizados
+\newcommand{\ulcolor}[2][Red]{\setulcolor{#1}\ul{#2}}
+\newcommand*\sepline{%
+  \begin{center}
+    \rule[1ex]{.5\textwidth}{.5pt}
+  \end{center}}
+
+% Configuración de encabezado y pie de página para todas las páginas
+\fancypagestyle{main}{
+    \fancyhf{} % Limpia encabezados y pies de página
+    \fancyhead[C]{Juan Ignacio Elosegui} % Encabezado centrado con tu nombre
+    \fancyfoot[R]{\thepage} % Número de página alineado a la derecha en el pie
+    \renewcommand{\headrulewidth}{0.4pt} % Línea bajo el encabezado
+    \renewcommand{\footrulewidth}{0pt}   % Sin línea en el pie de página
+}
+
+% Aplicar el estilo por defecto a todo el documento
+\pagestyle{main}
+
+\title{Teoría de las Decisiones $-$ Examen Viejo (Resuelto)}
+\date{Diciembre 2024}
+
+\begin{document}
+
+    % Primera página con título y encabezado
+    \maketitle
+    \thispagestyle{main} % Asegura el estilo en la primera página
+
+    \section*{\ulcolor[Green]{Ejercicio 1}}
+        \textbf{Datos:} \\
+        \\
+        Opciones: Renault Captur 2016 y Volkswagen Suran 2014. \\
+        Precios: Renault Captur 2016, \$3.000.000. Volkswagen Suran, \$2.000.000. \\
+        Probabilidades de romperse y arreglarla: Renault Captur 2016, 20\%. Volkswagen Suran, 40\%. \\
+        Costo adicional de los arreglos: Renault Captur 2016, \$3.000.000. Volkswagen Suran, \$2.000.000. \\
+        Queremos minimizar la cantidad del dinero gastado.
+        \\
+        \\
+        \textbf{Problema:} \\
+        Un mecánico muy capaz y de extrema confianza te ofrece revisar los dos autos y decirte, con total seguridad, si los autos necesitarán arreglos o no. ¿Cuánto es lo máximo que deberías estar dispuesta/o a pagar por su servicio?
+        \\
+        \\
+        \textbf{Solución:} \\
+        Me piden calcular el $EVPI$:
+        \[EVPI = EV|PI - EMV\]
+        Calculo $EMV$:
+        \[EMV: \min(EMV_{Captur}, EMV_{Suran})\]
+        \\
+        \[EMV_{Captur}: 3.000.000 + 0,2 \cdot 3.000.000\]
+        \[\implies EMV_{Captur}: 3.000.000 + 600.000\]
+        \[\implies EMV_{Captur}: 3.600.000\]
+        \\
+        \[EMV_{Suran}: 2.000.000 + 0,4 \cdot 2.000.000\]
+        \[\implies EMV_{Suran}: 2.000.000 + 800.000\]
+        \[\implies EMV_{Suran}: 2.800.000\]
+        $\therefore$Nos conviene comprar la Suran, porque se espera que gastemos menos plata en ella. \\
+        Calculo $EV|PI$:
+        \[EV|PI: \min(EV|PI_{Captur}, EV|PI_{Suran})\]
+        \\
+        \[EV|PI_{Captur}: (EV|Se Rompe) \cdot P(Se Rompe) + (EV|No Se Rompe) \cdot P(No Se Rompe)\]
+        \[\implies EV|PI_{Captur}: 6.000.000 \cdot 0,2 + 3.000.000 \cdot 0,8\]
+        \[\implies EV|PI_{Captur}: 1.200.000 + 2.400.000\]
+        \[EV|PI_{Captur}: 3.600.000\]
+        \\
+        \[EV|PI_{Suran}: 4.000.000 \cdot 0,4 + 2.000.000 \cdot 0,6\]
+        \[\implies EV|PI_{Suran}: 1.600.000 + 1.200.000\]
+        \[\implies EV|PI_{Suran}: 2.800.000\]
+        \\
+        \[EV|PI: \min(EV|PI_{Captur}, EV|PI_{Suran})\]
+        \[\implies EV|PI: \min(3.600.000, 2.800.000) \]
+        \[\therefore EV|PI: 2.800.000 \]
+        \\
+        \[EVPI = EV|PI - EMV\]
+        \[\implies EVPI = EV|PI - EMV\]
+        \[\implies EVPI = 2.800.000 - 2.800.000\]
+        \[\therefore EVPI = 0\]
+        \\
+        \textbf{Conclusión:} \\
+        La opción A es la correcta. No vamos a pagar nada por su servicio.
+    \section*{\ulcolor[Green]{Ejercicio 2}}
+        El sesgo cognitivo que describe el mismo fenómeno es la aversión a las pérdidas. \\
+        \\
+        La aversión a la ambigüedad describe que la gente prefiere optar por decisiones en la cual el riesgo tiene una probabilidad conocida. \\
+        El sesgo de competencia describe la tendencia a sobrevalorar nuestras habilidades en comparación a los demás. \\
+        El sesgo de disponibilidad nos lleva a evaluar la probabilidad o la importancia de un evento basándonos en lo fácil que es recordarlo o imaginar ejemplos relacionados.\\
+        La aversión al riesgo es cuando a la gente le "asustan" las situaciones inciertas.
+    \section*{\ulcolor[Yellow]{Ejercicio 3}}
+        \textbf{Datos:} \\
+        En la opción A, la pistola tiene 3 balas aseguradas en 6 posibles lugares de la cámara. \\
+        % TODO: ver esto
+    \section*{\ulcolor[Green]{Ejercicio 4}}
+        La opción incorrecta es la C: "La Ley de WF explica por qué algunas personas tienen simpatía por el riesgo". \\
+        \\
+        Es verdad que necesitamos estímulos cada vez más grandes para notar una diferencia (A) \\
+        Es verdad que tiene aplicaciones a la percepción del brillo, la cognición aritmética y la farmacología (B) \\
+        Es verdad que puede ser formulada como una ecuación diferencial, porque crece menos constantemente (D) \\
+        Es verdad que nuestras sensaciones subjetivas son logarítmicas en intensidad por la misma razón que D. (E)
+    \section*{\ulcolor[Yellow]{Ejercicio 5}}
+        Se sabe que en una paradoja de San Petersburgo el EVM es infinito. Sin embargo, los participantes no estarían dispuestos a pagar mucho. Habiendo dicho esto, descartamos las opciones que dicen que algún participante está dispuesto a pagar infinito.
+        
+        Por lo tanto, la opción correcta es la E: El agente A estaría dispuesto a pagar \$2 como máximo y el agente B, \$4.
+        \\
+        \\
+        \textbf{Corrección: (lo expliqué para el orto)} \\
+        Sabemos que \(U_{A}(x) = x \wedge U_{B}(x) = x^{2}\) y que el valor esperado en esta apuesta es: \\
+        \(EMV = \sum^{\infty}_{i = 1}(\frac{1}{2^{i}} \cdot 2^{i})\) \\
+        \(\implies EMV = \sum^{\infty}_{i = 1}(1)\) \\
+        \(\therefore EMV = \infty\) \\
+        $2^{i}$ es el pago de cada iteración, y $\frac{1}{2^{i}}$ es la probabilidad de duplicar los \$2 en cada iteración.
+        \\
+        \\
+        Si usamos las funciones de utilidad, y calculando el EUT de cada uno: \\
+        \(EUT_{A} = \sum^{\infty}_{i = 1}\left( \frac{1}{2^{i}} \cdot U_{A}(2^{i}) \right)\) \\
+        \(\implies EUT_{A} = \sum^{\infty}_{i = 1}\left( \frac{1}{2^{i}} \cdot 2^{i} \right)\) \\
+        \(\implies EUT_{A} = \sum^{\infty}_{i = 1}(1)\) \\
+        \(\therefore EUT_{A} = \infty\) \\
+        Sin embargo, en la práctica, un agente con utilidad lineal tiende a ser averso frente a riesgos, limitando cuánto estaría dispuesto a pagar. Si A limita su pago al valor inicial garantizado de la primera iteración (\$2), entonces pagará como máximo \$2. \\
+        \\
+        \(EUT_{B} = \sum^{\infty}_{i = 1}\left( \frac{1}{2^{i}} \cdot U_{B}(2^{i}) \right)\) \\
+        \(\implies EUT_{B} = \sum^{\infty}_{i = 1}\left( \frac{1}{2^{i}} \cdot (2^{i})^{2} \right)\) \\
+        \(\implies EUT_{B} = \sum^{\infty}_{i = 1}\left( \frac{1}{2^{i}} \cdot 2^{2i} \right)\) \\
+        \(\implies EUT_{B} = \sum^{\infty}_{i = 1}(\frac{2^{2i}}{2^{i}})\) \\
+        \(\implies EUT_{B} = \sum^{\infty}_{i = 1}(\frac{4^{i}}{2^{i}})\) \\
+        \(\implies EUT_{B} = \sum^{\infty}_{i = 1}(2^{i})\) \\
+        \(\therefore EUT_{B} = \infty\) \\
+        Dado que la utilidad cuadrática hace que B valore de forma desproporcionada los pagos más grandes, estaría dispuesto a pagar algo más que A, pero sigue siendo conservador. Con base en el enunciado, podemos asumir que B pagará como máximo \$4.
+    \section*{\ulcolor[Green]{Ejercicio 6}}
+        El sesgo de confirmación es aquel que nos hace recordar información que confirme nuestra hipótesis, mientras ignoramos la información que demuestre lo contrario. Es como si fuera antivacunas y busque sólo la información que respalde que son malas nada más. \\
+        \\
+        El sesgo de información social hace que los grupos a los cuales pertenecemos influyan en cómo interpretamos la información. Es como decir que si mi familia es liberal, lo más probable es que piense como tal sin saber nada de política. \\
+        \\
+        El sesgo de información compartida hace que repitamos como loros la información que todo el grupo al cual pertenezco ya conoce, sin aportar cosas nuevas. Es como en un viaje que estamos organizando en el cual todos queremos ir a Bariloche, pero uno o dos quieren ir a Mar del Plata (no les van a dar bola). \\
+        \\
+        El sesgo de información redundante hace que le demos más peso a la información que se nos presenta muchas veces, lo cual nos puede llegar a convencer. Es como el ESPN hace creer a los bosteros que Lautaro Blanco es un buen lateral sólo porque lo dicen todo el tiempo. PD: es un jugador común. \\
+        \\
+        El sesgo de disponibilidad es el que nos pone a pensar en situaciones que se asemejan a otras para juzgar la probabilidad de que ocurra. Si algo es más fácil de recordar, pensamos que es más probable. Si vemos una noticia de que se cayó un avión, vamos a recordar eso cuando nos subamos nosotros a uno, por lo que creeremos que es más probable. \\
+        \\
+        \textbf{Conclusión:} \\
+        BJ Carter pidió sólo los datos de las fallas del motor cuando hacía frío nada más. Eso lo hizo porque era su hipótesis: el motor falla cuando hace frío. Pero esto terminó siendo falso, no tenía nada que ver. \\
+        \\
+        La respuesta correcta es la A: sesgo de confirmación.
+    \section*{\ulcolor[Green]{Ejercicio 7}}
+        \textbf{Desarrollo:} \\
+        \(AI_{1} = \frac{m_{high} - m_{low}}{a_{high} - a_{low}}\) \\
+        \(\implies 0,2 = \frac{m_{high} - m_{low}}{200 - A1}\) \\
+        \(\implies 0,2 = \frac{180 - 160}{200 - A1}\) \\
+        \(\implies 0,2 = \frac{20}{200 - A1}\) \\
+        \(\implies 0,2 \cdot (200 - A1) = 20\) \\
+        \(\implies 0,2 \cdot 200 - 0,2 \cdot A1 = 20\) \\
+        \(\implies 40 - 0,2 \cdot A1 = 20\) \\
+        \(\implies 20 = 0,2 \cdot A1\) \\
+        \(\implies \frac{20}{\frac{2}{10}} = A1\) \\
+        \(\therefore A1 = 100\) \\
+        \\
+        \(AI_{2} = \frac{m_{high} - m_{low}}{a_{high} - a_{low}}\) \\
+        \(\implies 0,2 = \frac{340 - 300}{A2 - 200}\) \\
+        \(\implies 0,2 \cdot (A2 - 200) = 40\) \\
+        \(\implies 0,2 \cdot A2 - 40 = 40\) \\
+        \(\implies 0,2 \cdot A2 = 80\) \\
+        \(\implies A2 = \frac{80}{\frac{2}{10}}\) \\
+        \(\implies A2 = \frac{80}{\frac{2}{10}}\) \\
+        \(\therefore A2 = 400\) \\
+        \\
+        \textbf{Conclusión:} \\
+        La respuesta correcta es la E.
+    \section*{\ulcolor[Green]{Ejercicio 8}}
+        \textbf{Análisis:} \\
+        El caso de iTunes que se relaciona con el comportamiento racional percibido como inmoral tiene que ver con cómo la empresa manejó las políticas de precios y licencias de música.
+
+        En lugar de ofrecer canciones a un precio fijo (por ejemplo, \$0.99 por canción, lo cual era transparente y predecible), iTunes introdujo precios variables basados en la popularidad o demanda de las canciones.
+        
+        Esto se interpretó como una estrategia racional de maximización de ingresos por parte de Apple, ya que respondía a la lógica económica: cobrar más por canciones populares y menos por las menos deseadas. \\
+        \textbf{Conclusión:} \\
+        La opción A es la correcta.
+    
+    \section*{\ulcolor[Green]{Ejercicio 9}}
+        \textbf{Análisis:} \\
+        Si agregamos una tercera opción con un precio $x$, tal que $\mathdollar 1.000 < \mathdollar x \leq \mathdollar 1.700$, se va a dar el efecto señuelo. Por eso mismo, descartamos de base las opciones B y C. \\
+        \\
+        Además, ninguna persona racional pagaría \$1.250 por un paquete de 300 gramos, sabiendo que hay uno de 400 gramos más barato\ldots por eso descartamos la opción D. \\
+        \\
+        Por eso, si agregamos la tercera opción de un paquete de 500 gramos a \$1.250, la gente se verá sesgada a comprar el paquete de 400 gramos a \$1.000.
+        \\
+        \textbf{Conclusión:} \\
+        La opción A es la correcta.
+    \section*{\ulcolor[Green]{Ejercicio 10}}
+        \subsection*{Inciso 1}
+\end{document}

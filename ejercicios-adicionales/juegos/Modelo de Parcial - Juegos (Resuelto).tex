@@ -1,0 +1,158 @@
+\documentclass{article}
+\usepackage{graphicx, soul, amsmath, amssymb, multirow, array, colortbl, float, pgfplots}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[a4paper, margin=0.8in]{geometry}
+\usepackage{fancyhdr} % Paquete para encabezados y pies de página
+\usepackage[utf8]{inputenc}
+\pgfplotsset{compat=1.18}
+
+% Configuración de soul
+\setul{0.5ex}{0.3ex}
+
+% Comandos personalizados
+\newcommand{\ulcolor}[2][Red]{\setulcolor{#1}\ul{#2}}
+\newcommand*\sepline{%
+  \begin{center}
+    \rule[1ex]{.5\textwidth}{.5pt}
+  \end{center}}
+
+% Configuración de encabezado y pie de página para todas las páginas
+\fancypagestyle{main}{
+    \fancyhf{} % Limpia encabezados y pies de página
+    \fancyhead[C]{Juan Ignacio Elosegui} % Encabezado centrado con tu nombre
+    \fancyfoot[R]{\thepage} % Número de página alineado a la derecha en el pie
+    \renewcommand{\headrulewidth}{0.4pt} % Línea bajo el encabezado
+    \renewcommand{\footrulewidth}{0pt}   % Sin línea en el pie de página
+}
+
+% Aplicar el estilo por defecto a todo el documento
+\pagestyle{main}
+
+\title{Modelo de Parcial (Teoría de Juegos) $-$ Resuelto}
+\author{Juani Elosegui}
+\date{Diciembre 2024}
+
+\begin{document}
+    \maketitle
+    
+    \section*{Parte A: Teoría}
+        \subsection*{Ejercicio 1}
+            \begin{itemize}
+                \item (a) Falso. Jugar primero tiene sus ventajas también, por lo que no es siempre conveniente.
+                \item (b) Falso. El Dilema del Prisionero tiene un solo subjuego, que es el juego completo.
+                \item (c) Verdadero. Ningún jugador racional jugará una estrategia estrictamente dominada.
+                \item (d) Verdadero. Si bien importa que hayan colaborado en el pasado, es clave que tengan todavía períodos por jugar.
+            \end{itemize}
+        \subsection*{Ejercicio 2}
+            Un conjunto de información muestra lo que saben los jugadores acerca de lo que se jugó en los períodos pasados y las posibles acciones a futuro.
+    \section*{Parte B: Ejercicios a Desarrollar}
+        \subsection*{Ejercicio 1}
+            Esto no está del todo correcto, porque depende de cómo sean las interacciones entre los agentes. Si estamos en un contexto de competencia, la ambición individual sólo va a ser al bien común si nos lleva a tomar una estrategia que represente un equilibrio de Nash o un óptimo de Pareto. Además, se están asumiendo condiciones perfectas (por ejemplo, la información perfecta).
+        \subsection*{Ejercicio 2}
+            \subsubsection*{(a)}
+                Las estrategias racionalizables son A y B para el jugador 1 y para el jugador 2.
+                \begin{table}[H]
+                    \begin{tabular}{|c|c|c|c|}
+                        \hline
+                                & A & B & C \\ \hline
+                            A & 0, 0 & 3, 4 & 6, 0 \\ 
+                            B & 4, 3 & 0, 0 & 0, 0 \\
+                            C & 0, 6 & 0, 0 & 5, 5 \\ \hline
+                    \end{tabular}
+                \end{table}
+            \subsubsection*{(b)}
+                EN = \{(B, A); (A, B)\}.
+                \begin{table}[H]
+                    \begin{tabular}{|c|c|c|}
+                        \hline
+                            & A & B \\ \hline
+                        A & 0, 0 & \ulcolor[red]{3}, \ulcolor[blue]{4} \\ 
+                        B & \ulcolor[red]{4}, \ulcolor[blue]{3} & 0, 0 \\ \hline
+                    \end{tabular}
+                \end{table}
+                \begin{table}[H]
+                    \begin{tabular}{|c|c|c|}
+                        \hline
+                            & A \textcolor{blue}{(q)} & B \textcolor{blue}{(1-q)} \\ \hline
+                        A \textcolor{red}{(p)} & 0, 0 & 3, 4 \\ 
+                        B \textcolor{red}{(1-p)} & 4, 3 & 0, 0 \\ \hline
+                    \end{tabular}
+                \end{table}
+                Planteo la situación de igualdad: \\
+                \(PE_{A, J1} = PE_{B, J1}\) \\
+                \(\implies 0(q) + 3(1-q) = 4(q) + 0(1-q)\) \\
+                \(\implies 3(1-q) = 4(q)\) \\
+                \(\implies 3-3q = 4q\) \\
+                \(\implies 3 = 7q\) \\
+                \(\therefore q = \frac{3}{7}\) \\
+                \\
+                \(PE_{A, J2} = PE_{B, J2}\) \\
+                \(\implies 0(p)+3(1-p) = 4(p)+0(1-p)\) \\
+                \(\implies 3(1-p) = 4p\) \\
+                \(\implies 3-3p = 4p\) \\
+                \(\implies 3 = 7p\) \\
+                \(\implies p = \frac{3}{7}\) \\
+                \\
+                El equilibrio en estrategias mixtas es: \(\{(p = \frac{3}{7}, 1-p = \frac{4}{7});(q = \frac{3}{7}, 1-q = \frac{4}{7})\}\)
+            \subsubsection*{(c)}
+                \begin{table}[H]
+                    \begin{tabular}{|c|c|c|c|}
+                        \hline
+                                & A & B & C \\ \hline
+                            A & 0, 0 & 3, 4 & 6, 0 \\ 
+                            B & 4, 3 & 0, 0 & 0, 0 \\
+                            C & 0, 6 & 0, 0 & 5, 5 \\ \hline
+                    \end{tabular}
+                \end{table}
+                El J1 coopera si: \\
+                \(VP_{coop} \geq VP_{desv}\) \\
+                \(\implies 5 + 3\delta \geq 6 + (4q)\delta\) \\
+                \(\implies 5 + 3\delta \geq 6 + (4\frac{3}{7})\delta\) \\
+                \(\implies 5 + 3\delta \geq 6 + \frac{12}{7}\delta\) \\
+                \(\implies 3\delta - \frac{12}{7}\delta \geq 6 - 5\) \\
+                \(\implies \frac{21-12}{7}\delta \geq 1\) \\
+                \(\implies \frac{9}{7}\delta \geq 1\) \\
+                \(\implies 9\delta \geq 7\) \\
+                \(\implies \delta \geq \frac{7}{9}\) \\
+                \(\therefore \delta \approx 0,778\) \\
+                \\
+                El J2 coopera si: \\
+                \(VP_{coop} \geq VP_{desv}\) \\
+                \(\implies 5 + 4\delta \geq 6 + (4p)\delta\) \\
+                \(\implies 5 + 4\delta \geq 6 + (4\frac{3}{7})\delta\) \\
+                \(\implies 4\delta - (4\frac{3}{7})\delta \geq 6 - 5\) \\
+                \(\implies 4\delta - \frac{12}{7}\delta \geq 1\) \\
+                \(\implies \frac{28-12}{7}\delta \geq 1\) \\
+                \(\implies \frac{16}{7}\delta \geq 1\) \\
+                \(\implies 16\delta \geq 7\) \\
+                \(\implies \delta \geq \frac{7}{16}\) \\
+                \(\therefore \delta \approx 0,438\) \\
+                \\
+                Para que sea sostenible el acuerdo, tomamos el valor de paciencia del más paciente, que es el J1.
+        \subsection*{Ejercicio 3}
+            \begin{table}[H]
+                \begin{tabular}{|c|c|c|}
+                    \hline
+                        & C & NC \\ \hline
+                    C & -5-m, -5-m & 0-m, -15 \\ 
+                    NC & -15, 0-m & -1, -1 \\ \hline
+                \end{tabular}
+            \end{table}
+            \subsubsection*{(a)}
+                Para el jugador 1: \\
+                \(-5-m > -15 \wedge 0-m > -1\) \\
+                \(\implies -m > -10 \wedge -m > -1\) \\
+                \(\therefore m < 10 \wedge m < 1\) \\
+                \(\therefore m < 1\) \\
+                \\
+                Para el jugador 2: \\
+                \(-5-m > -15 \wedge 0-m > -1\) \\
+                \(\implies -m > -10 \wedge -m > -1\) \\
+                \(\therefore m < 10 \wedge m < 1\) \\
+                \(\therefore m < 1\) \\
+        \subsection*{Ejercicio 4}
+            \subsubsection*{(a)}
+                Tiene tres subjuegos: el nodo padre, y los nodos que apuntan las flechas con W y Z. El resto no es considerado subjuego porque tienen un conjunto de información imperfecta.
+            \subsubsection*{(b)}
+                
+\end{document}

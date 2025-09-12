@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{graphicx, soul, amsmath, amssymb, multirow, array, colortbl, float, pgfplots}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[a4paper, margin=0.8in]{geometry}
+\usepackage{fancyhdr} % Paquete para encabezados y pies de página
+\usepackage[utf8]{inputenc}
+\pgfplotsset{compat=1.18}
+
+\setul{0.5ex}{0.3ex}
+
+\newcommand{\ulcolor}[2][Red]{\setulcolor{#1}\ul{#2}}
+\newcommand*\sepline{%
+  \begin{center}
+    \rule[1ex]{.5\textwidth}{.5pt}
+  \end{center}}
+
+\fancypagestyle{main}{
+    \fancyhf{}
+    \fancyhead[C]{Juan Ignacio Elosegui}
+    \fancyfoot[R]{\thepage}
+    \renewcommand{\headrulewidth}{0.4pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+\pagestyle{main}
+
+\title{Trabajo Práctico 3 $-$ Teoría de Juegos}
+\author{Juani Elosegui}
+\date{Diciembre 2024}
+
+\begin{document}
+    \maketitle
+    
+    \section*{Problema 1}
+        \subsection*{Inciso (a)}
+            Esto es verdadero. El primer jugador que juega siempre es ventajoso.
+        \subsection*{Inciso (b)}
+            Esto es falso. No es un juego válido porque el jugador 2 sí tiene información acerca de lo que pasó en el período anterior. Lo sabrá por la cantidad de estrategias disponibles que tiene. Si el jugador 1 juega A, el jugador 2 sabe que jugó eso porque se le presentan dos opciones. Si el jugador 1 juega B, el jugador 2 sabe que jugó eso porque tiene tres opciones.
+    \section*{Problema 2}
+        \subsection*{(a)}   
+            Lo hice en algún cuaderno.
+        \subsection*{(b)}
+            El jugador 2 va a aceptar una cantidad positiva. Esto es: \\
+            \[m + a(m-(1-m)) \geq 0\]
+            \[m + a(m-1+m) \geq 0\]
+            \[m + a(2m-1) \geq 0\]
+            \[m \geq -a(2m-1)\]
+            \[m \geq -2ma+a\]
+            \[m+2ma \geq a\]
+            \[m(1+2a) \geq a\]
+            \[m \geq \frac{a}{1+2a}\]
+            El jugador 1 va a ofrecer \(m =\frac{a}{1+2a}\). \\
+            $\therefore$ ENPS \(\{(\text{J1: }m =\frac{a}{1+2a}; \text{J2: }m \geq \frac{a}{1+2a})\}\)
+        \subsection*{(c)}
+            Zzz\dots
+
+\end{document}

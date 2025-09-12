@@ -1,0 +1,178 @@
+\documentclass{article}
+\usepackage{graphicx, soul, amsmath, amssymb, multirow, array, colortbl, float, pgfplots}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[a4paper, margin=0.8in]{geometry}
+\usepackage{fancyhdr} % Paquete para encabezados y pies de página
+\usepackage[utf8]{inputenc}
+\pgfplotsset{compat=1.18}
+
+\setul{0.5ex}{0.3ex}
+
+\newcommand{\ulcolor}[2][Red]{\setulcolor{#1}\ul{#2}}
+\newcommand*\sepline{%
+  \begin{center}
+    \rule[1ex]{.5\textwidth}{.5pt}
+  \end{center}}
+
+\fancypagestyle{main}{
+    \fancyhf{}
+    \fancyhead[C]{Juan Ignacio Elosegui}
+    \fancyfoot[R]{\thepage}
+    \renewcommand{\headrulewidth}{0.4pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+\pagestyle{main}
+
+\title{Trabajo Práctico 2 $-$ Teoría de Juegos}
+\author{Juani Elosegui}
+\date{Diciembre 2024}
+
+\begin{document}
+    \maketitle
+    
+    \section*{Problema 1}
+        Esto sí es verdadero. Pero no tengo muchas ganas de explicar el porqué.
+    \section*{Problema 2}
+        \begin{table}[H]
+            \begin{tabular}{|c|c|c|}
+                \hline
+                    & H & D \\ \hline
+                H   & $\frac{V-C}{2}$, $\frac{V-C}{2}$ & V, 0 \\ 
+                D   & 0, V & $\frac{V}{2}$, $\frac{V}{2}$ \\ \hline
+            \end{tabular}
+        \end{table}
+        \subsection*{Inciso (a)}
+            Si tenemos que $V = 1, C = 3$, los EN en estrategias puras son EN = \{(D,H); (H,D)\}.
+            \begin{table}[H]
+                \begin{tabular}{|c|c|c|}
+                    \hline
+                        & H & D \\ \hline
+                    H   & -1, -1 & \ulcolor[red]{1}, \ulcolor[blue]{0} \\ 
+                    D   & \ulcolor[red]{0}, \ulcolor[blue]{1} & 0.5, 0.5 \\ \hline
+                \end{tabular}
+            \end{table}
+            \begin{table}[H]
+                \begin{tabular}{|c|c|c|}
+                    \hline
+                        & H \textcolor{blue}{(q)} & D \textcolor{blue}{(1-q)} \\ \hline
+                    H \textcolor{red}{(p)} & -1, -1 & 1, 0 \\ 
+                    D \textcolor{red}{(1-p)} & 0, 1 & 0.5, 0.5 \\ \hline
+                \end{tabular}
+            \end{table}
+            \(PE_{HJ1} = -1q + 1(1-q)\) \\
+            \(\implies PE_{HJ1} = -q + 1 - q\) \\
+            \(\therefore PE_{HJ1} = -2q + 1\) \\
+            \\
+            \(PE_{DJ1} = 0q + 0,5(1-q)\) \\
+            \(\implies PE_{DJ1} = 0,5(1-q)\) \\
+            \(\implies PE_{DJ1} = 0,5-0,5q\) \\
+            \\
+            En una situación de equilibrio: \\
+            \(PE_{HJ1} = PE_{DJ1}\) \\
+            \(\implies -2q + 1 = 0,5-0,5q\) \\
+            \(\implies 1-0,5 = -0,5q+2q\) \\
+            \(\implies 0,5 = 1,5q\) \\
+            \(\implies q = \frac{0,5}{1,5}\) \\
+            \(\therefore q = \frac{1}{3}\) \\
+            \\
+            \(PE_{HJ2} = -1p + 0(1-q)\) \\
+            \(\therefore PE_{HJ2} = -p\) \\
+            \\
+            \(PE_{DJ2} = 1p + 0,5(1-p)\) \\
+            \(\implies PE_{DJ2} = 1p + 0,5(1-p)\) \\
+            \(\implies PE_{DJ2} = p + 0,5-0,5p\) \\
+            \(\implies PE_{DJ2} = 0,5-0,5p\) \\
+            \\
+            En una situación de equilibrio: \\
+            \(PE_{HJ2} = PE_{DJ2}\) \\
+            \(\implies -p = 0,5-0,5p\) \\
+            \(\implies -p+0,5p = 0,5\) \\
+            \(\implies -0,5p = 0,5\) \\
+            \(\implies p = \frac{0,5}{-0,5}\) \\
+            \(\therefore p = 1\) \\
+            \\
+            \(\therefore \{(q = \frac{1}{3}, 1-p = \frac{2}{3}); (p = 1, 1-p = 0)\}\) \\
+            \textit{Esto está mal hecho, ya fue. No había que elegir valores arbitrarios de V y C. La idea era seguir trabajando con esas variables, pero bueno.}
+    \section*{Problema 3}
+        \subsection*{Inciso (a)}
+            Quiero demostrar que:
+            \[1 \cdot 0 < 4 \cdot 0,5 + 0 \cdot 0,5 \wedge 1 \cdot 0 < 0 \cdot 0,5 + 3 \cdot 0,5\]
+            \[\implies 0 < 4 \cdot 0,5 \wedge 0 < 3 \cdot 0,5\]
+            \[\implies 0 < 2 \wedge 0 < 1,5\]
+            \[\therefore \text{Se cumplen las dos afirmaciones.}\]
+        \subsection*{Inciso (b)}
+            Quiero encontrar un $q$ que cumpla lo siguiente:
+            \[1 < 4 \cdot q + 0 \cdot q \wedge 1 \cdot 0 < 0 \cdot (1-q) + 3 \cdot (1-q)\]
+            \[\implies 1 < 4 \cdot q \wedge 1 < 3 \cdot (1-q)\]
+            \[\implies 1 < 4q \wedge 1 < 3-3q\]
+            \[\implies \frac{1}{4} < q \wedge -2 < -3q\]
+            \[\implies \frac{1}{4} < q \wedge \frac{2}{3} > q\]
+            \[\implies \frac{1}{4} < q < \frac{2}{3}\]
+            \[\therefore 0,25 < q < 0,67\]
+            Para que una estrategia mixta domine estrictamente a T, el jugador debe asignarle una probabilidad $q$ a L y $1-q$ a R, con \(0,25 < q < 0,67\).
+    \section*{Problema 4}
+        \subsection*{Inciso (a)}
+            \begin{table}[H]
+                \begin{tabular}{|c|c|c|}
+                    \hline
+                        & Left & Right \\ \hline
+                    Up   & 0, 6 & 10, 10 \\ 
+                    Down   & 9, 6 & 4, 0 \\ \hline
+                \end{tabular}
+            \end{table}
+        \subsection*{Inciso (b)}
+            Los equilibrios son EN = \{(D,L);(U,R)\}.
+            \begin{table}[H]
+                \begin{tabular}{|c|c|c|}
+                    \hline
+                        & Left & Right \\ \hline
+                    Up   & 0, 6 & \ulcolor[Red]{10}, \ulcolor[Blue]{10} \\ 
+                    Down   & \ulcolor[Red]{9}, \ulcolor[Blue]{6} & 4, 0 \\ \hline
+                \end{tabular}
+            \end{table}
+        \subsection*{Inciso (c)}
+            \begin{table}[H]
+                \begin{tabular}{|c|c|c|}
+                    \hline
+                        & Left \textcolor{blue}{(q)} & Right \textcolor{blue}{(1-q)} \\ \hline
+                    Up \textcolor{red}{(p)}  & 0, 6 & 10, 10 \\ 
+                    Down \textcolor{red}{(1-p)} & 9, 6 & 4, 0 \\ \hline
+                \end{tabular}
+            \end{table}
+            En una situación de equilibrio: \\
+            \(PE_{UpJ1} = PE_{DownJ1}\) \\
+            \(\implies 0q + 10(1-q) = 9q + 4(1-q)\) \\
+            \(\implies 10-10q = 9q+4-4q\) \\
+            \(\implies 10-10q = 5q+4\) \\
+            \(\implies 6 = 15q\) \\
+            \(\implies q = \frac{6}{15}\) \\
+            \(\implies q = \frac{2}{5}\) \\
+            \\
+            \(PE_{LeftJ2} = PE_{RightJ2}\) \\
+            \(\implies 6p + 6(1-p) = 10p + 0(1-p)\) \\
+            \(\implies 6p+6-6p = 10p\) \\
+            \(\implies 6 = 10p\) \\
+            \(\implies p = \frac{3}{5}\) \\
+            \\
+            Entonces, el punto de equilibrio en estrategias mixtas es: \(\{(p = \frac{3}{5}, 1-p = \frac{2}{5});(q = \frac{2}{5}, 1-q = \frac{3}{5})\}\).
+        \subsection*{Inciso (d)}
+            \textit{No sé cómo graficarla en LaTeX. Es una esvástica.} Expreso las fórmulas:
+            \[
+                BRF_{J1}(q) =
+                    \begin{cases} 
+                        \text{Up} & \text{si } q < \frac{2}{5} \\ 
+                        \text{Up, Down} & \text{si } q = \frac{2}{5} \\
+                        \text{Down} & \text{si } q > \frac{2}{5} \\
+                    \end{cases}
+            \]
+            Si $q$ es menor que $\frac{2}{5}$, se irá del punto de equilibrio y optará por jugar por Up. En caso de ser mayor, optará por jugar Down.
+            \[
+                BRF_{J2}(p) =
+                    \begin{cases} 
+                        \text{Left} & \text{si } p < \frac{3}{5} \\ 
+                        \text{Left, Right} & \text{si } p = \frac{3}{5} \\
+                        \text{Right} & \text{si } p > \frac{3}{5} \\
+                    \end{cases}
+            \]
+\end{document}

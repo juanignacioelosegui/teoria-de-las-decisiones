@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage{graphicx, amsmath, amssymb}
+
+\title{Trabajo Práctico 4 - Juegos Repetidos}
+\author{Juani Elosegui}
+\date{Octubre 2024}
+
+\begin{document}
+    \maketitle
+
+    \newpage
+
+    \section*{\underline{\textbf{Teóricas}}}
+        \subsection*{Ejercicio 1}
+            \subsubsection*{(a)}
+                Sabemos que en los juegos infinitamente repetidos la probabilidad $p$ de que se juegue la próxima ronda. Como es de esperar, la decisión de la cooperación está relacionada con esta probabilidad. Si la probabilidad de que se juegue una próxima ronda es baja, los jugadores tendrán más incentivos para \textbf{desviarse}, y si esta probabilidad es alta, los jugadores van a estar más motivados para \textbf{cooperar}.
+                \\
+                \\
+                Si los dos jugadores cooperan, se va a llegar a un óptimo de Pareto sólo si los beneficios futuros de la cooperación son mayores que los beneficios inmediatos si se desvían. Si el $p$ es alto, los jugadores valorarán más los pagos futuros y los motivarán más a cooperar en un ENPS. Pasa lo contrario si $p$ fuese bajo.
+            \subsubsection*{(b)}
+                Cuando un juego tiene etapas finitas del juego, los jugadores pueden saber que en la última etapa $t$ no tienen ningún otro incentivo para seguir cooperando o seguir desviándose de un equilibrio de Nash, justamente porque no existe otra etapa del juego más allá de la última.
+                \\
+                \\
+                Cuando se sabe que en la última etapa ($t = f$) van a jugar un equilibrio de Nash, esta información va a afectar a la etapa anterior (es decir, $t=f-1$). En la etapa $t=f-1$ se va a jugar también un equilibrio de Nash porque saben que en la última etapa $t$ también se va a jugar un equilibrio de Nash.
+                
+                Toda esta \textbf{inducción hacia atrás} se repite hasta la primera etapa $t=0$, lo que hace imposible que se juegue otra estrategia que no sea precisamente la del equilibrio de Nash
+                
+                Entonces, es \textbf{verdadero} que los únicos ENPS son los equilibrios de Nash.
+    \section*{\underline{\textbf{Juegos finitos}}}
+        \subsection*{Ejercicio 2}
+            En el juego \textbf{a} partimos pensando en lo que jugarían en el segundo período: los dos tienen un fuerte incentivo para desviarse porque esta es la estrategia dominante. Cuando los jugadores saben esto, analizan lo que harían en el primer período: no tienen pensado cooperar porque esto no les dará una recompensa en el segundo período. Por lo tanto eligirán desviarse. (Son dos dilemas del prisionero)
+            \\
+            \\
+            En el juego \textbf{b} tenemos en el primer término un dilema del prisionero y en el segundo término. En el último período hay dos equilibrios de Nash: (A,A) y (B,B). Como (B,B) tiene pagos mayores, se inclinarán por esas estrategias. Como saben esto, en el primer período, si cooperan, podrán coordinar en el segundo período y recibir un pago importante. Pero si alguno se desvía en el primer período puede destrozar la confianza si juega la estrategia D y llevar a una coordinación de (A,A) en el segundo período. Contemplando la posibilidad de recibir pagos muy altos en el segundo período los invita a cooperar primero.
+    \section*{\underline{\textbf{Juegos infinitos}}}
+        \subsection*{Ejercicio 3}
+            \begin{table}[h]
+                \begin{center}
+                    \begin{tabular}{ccc}
+                         & \textbf{C} & \textbf{NC} \\
+                        \textbf{C} & 4,4 & 0,6\\
+                        \textbf{NC} & 6,0 & 2,2\\
+                    \end{tabular}
+                \end{center}
+            \end{table}
+            \subsubsection*{(a)}
+                Para que se dé la cooperación, se pide que:
+                \[VP_{Cooperar} \geq VP_{Desviarse}\]
+                \[\frac{4}{1 - \delta} \geq 6 + \frac{2\delta}{1-\delta}\]
+                \[\implies \delta = 0,5\]
+
+                Será el valor mínimo para que cooperen.
+            \subsubsection*{(b)}
+                Para que se dé la cooperación, se pide que:
+                \[4 + \delta 4 + \delta^{2}4 \geq 6 + \delta 2 + \delta^{2}2\]
+                \[\implies 4 + \delta 4 + \delta^{2}4 \geq 6 + 2\delta + 2\delta^{2}\]
+                \[\implies 4 + 4\delta + 4\delta^{2} \geq 6 + 2\delta + 2\delta^{2}\]
+                \[\implies 4\delta + 4\delta^{2} - 2\delta - 2\delta^{2} \geq 6 - 4\]
+                \[\implies 2\delta + 2\delta^{2} \geq 2\]
+                \[\implies 2\delta(1+\delta) \geq 2\]
+                \[\implies \delta(1+\delta) \geq \frac{2}{2}\]
+                \[\implies \delta^{2}+\delta \geq 1\]
+                \[\implies \delta^{2}+\delta - 1 \geq 0\]
+                \[\therefore \delta \approx 0,618 \]
+                
+
+\end{document}

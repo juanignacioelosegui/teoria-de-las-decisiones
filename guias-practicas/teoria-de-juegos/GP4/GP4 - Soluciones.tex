@@ -1,0 +1,137 @@
+\documentclass{article}
+\usepackage{graphicx, soul}
+\usepackage[dvipsnames]{xcolor} % for expanded colour set
+
+\setul{0.5ex}{0.3ex}
+
+\newcommand{\ulcolor}[2][Red]{\setulcolor{#1}\ul{#2}}
+
+\title{Guía Práctica 4 - Juegos Repetidos (Resuelto)}
+\author{Juani Elosegui}
+\date{Octubre 2024}
+
+\begin{document}
+    \maketitle
+
+    \section*{\underline{Ejercicio 1}}
+        \subsection*{(a)}
+            \textbf{1) Elegir la mejor opción en cooperación para los dos}
+            \\
+            Los EN = \{(U,L);(D,R)\}. Si los dos cooperan irán a parar a (U,L) y si los dos se desvían terminarán en (D,R).
+            \\
+            \\
+            \textbf{2) Formular ecuaciones de valores presentes}
+            \\
+            Podemos decir que \(VP_{cooperar} = 2 \cdot \frac{1}{1-\delta}\), ya que mientras sigan cooperando, los dos van a recibir el mismo pago siempre.
+
+            También, \(VP_{desviar} = 4 + \delta 1 + \delta^{2} 1 + delta^{3} 1 + \ldots = 4 + 1 \frac{\delta}{1 - \delta}\)
+            , ya que si alguno se desvía va a conseguir un único pago de \$4, y cuando el otro se dé cuenta va a desviarse también y condenará al resto a pagos de \$1.
+            \\
+            \\
+            \textbf{3) Formular desigualdad}
+            \\
+            Conviene cooperar si y sólo si:
+            \[VP_{cooperar} \geq VP_{desviar}\]
+            \[2 \cdot \frac{1}{1-\delta} \geq 4 + 1\frac{\delta}{1 - \delta}\]
+            \[\frac{2}{1 - \delta} \geq 4 + 1 \frac{\delta}{1 - \delta}\]
+            \[\frac{2}{1 - \delta} \geq \frac{4(1 - \delta)}{1 - \delta} + \frac{(1 - \delta) \cdot \delta}{1 - \delta}\]
+            \[\frac{2}{1 - \delta} \geq \frac{4 - 4\delta + \delta - \delta^{2}}{1 - \delta}\]
+            \[2 \geq - \delta^{2} - 3 \delta + 4\]
+            \[\delta^{2} + 3 \delta - 4 + 2 \geq 0\]
+            \[\delta^{2} + 3 \delta - 2 \geq 0\]
+            \[\delta \geq 0.56155\]
+ 
+            Como la paciencia no puede ser negativa, nos quedamos sólo con $\delta_{1}$.
+
+        \subsection*{(b)}
+            \textbf{1) Elegir la mejor opción de cooperación para los dos}
+            \\
+            \{(3,2)\}. \textit{¿No es elegir siempre el EN?}
+            \\
+            \\
+            \textbf{2) Plantear ecuaciones de los valores presentes}
+            \\
+            \(VP_{cooperar} = \frac{3}{1 - \delta} \geq \) \textit{¿Pero esto no es sólo para el J1?¿No se debe hacer lo mismo para el J2?}
+            
+            \(VP_{desviar} = 7 + 2\frac{\delta}{1 -\delta}\) porque va a recibir un único pago de \$7 seguido de infinitos pagos de \$2 cuando se desvíe también el J2.
+            \\
+            \\
+            \textbf{3) Formular desigualdad}
+            \\
+            \[VP_{cooperar} \geq VP_{desviarse}\]
+            \[\frac{3}{1 - \delta} \geq 7 + 2\frac{\delta}{1 -\delta}\]
+            \[\frac{3}{1 - \delta} \geq \frac{7(1 - \delta)}{1 - \delta} + \frac{2(1 - \delta)}{1 - \delta} \cdot \frac{\delta}{1 - \delta}\]
+            \[\frac{3}{1 - \delta} \geq \frac{7 - 7 \delta + (2 - 2 \delta) \cdot \delta}{1 - \delta}\]
+            \[\frac{3}{1 - \delta} \geq \frac{7 - 7 \delta + 2 \delta - 2 \delta^{2}}{1 - \delta}\]
+            \[3 \geq -2 \delta^{2} - 5 \delta + 7\]
+            \[2 \delta^{2} + 5 \delta + 3 - 7 \geq 0\]
+            \[2 \delta^{2} + 5 \delta - 4 \geq 0\]
+            \[\delta \geq 0.63746\]
+
+        \subsection*{(c)}
+            \textbf{1) Elegir la mejor opción en cooperación para los dos jugadores}
+            \\
+            \{(3,4)\} será la mejor opción.
+            \\
+            \\
+            \textbf{2) Plantear ecuaciones de los valores presentes en caso de cooperar o desviarse}
+            \\
+            \(VP_{cooperar} = \frac{3}{1 - \delta}\) ya que el J1 recibirá siempre pagos de \$3 en caso de que hayan cooperado en el período anterior.
+
+            \(VP_{desviarse} = 5 + 1 \frac{1}{1 - \delta}\) ya que el J1 recibirá un único pago de \$5 sumado de un pago perpetuo de \$1 cuando J2 se acomode.
+            \\
+            \\
+            \textbf{3) Hacer la desigualdad y encontrar el $\delta$}
+            \\
+            \[VP_{cooperar} \geq VP_{desviarse}\]
+            \[\frac{3}{1 - \delta} \geq 5 + 1 \frac{\delta}{1 - \delta}\]
+            \[\frac{3}{1 - \delta} \geq \frac{5(1 - \delta)}{1 - \delta} + \frac{1 - \delta}{1 - \delta} \cdot \frac{\delta}{1 - \delta}\]
+            \[\frac{3}{1 - \delta} \geq \frac{5 - 5 \delta}{1 - \delta} + \frac{\delta - \delta^{2}}{1 - \delta}\]
+            \[\frac{3}{1 - \delta} \geq \frac{5 - 5 \delta + \delta - \delta^{2}}{1 - \delta}\]
+            \[\frac{3}{1 - \delta} \geq \frac{- \delta^{2} - 4 \delta + 5}{1 - \delta}\]
+            \[3 \geq - \delta^{2} - 4 \delta + 5\]
+            \[\delta^{2} + 4 \delta - 5 + 3 \geq 0\]
+            \[\delta^{2} + 4 \delta - 2 \geq 0\]
+            \[\delta \geq 0.44949\]
+
+    \section{}
+     
+    \section*{\underline{Ejercicio 3}}
+        \subsection*{(a)}
+            \begin{table}[h]
+                \centering
+                \begin{tabular}{ccc}
+                    & \textbf{G} & \textbf{B}\\
+                    \textbf{G} & 150.000, 150.000 & 80.000, \ulcolor[Blue]{200.000}\\
+                    \textbf{B} & \ulcolor[Red]{200.000}, 80.000 & \ulcolor[Red]{100.000}, \ulcolor[Blue]{100.000}\\
+                \end{tabular}
+            \end{table}
+            Hay un sólo equilibrio de Nash: \{(B,B)\}. No es un juego del tipo Dilema del Prisionero.
+        
+        \subsection*{(b)}
+            \begin{table}[h]
+                \centering
+                \begin{tabular}{ccc}
+                    & \textbf{G} & \textbf{B}\\
+                    \textbf{G} & 150.000, 150.000 & 80.000, \ulcolor[Blue]{210.000}\\
+                    \textbf{B} & \ulcolor[Red]{210.000}, 80.000 & \ulcolor[Red]{100.000}, \ulcolor[Blue]{100.000}\\
+                \end{tabular}
+            \end{table}
+            Se mantiene el equilibrio de Nash: \{(B,B)\}. No es un juego del tipo Dilema del Prisionero.
+            
+        \subsection*{c)}
+            \begin{table}[h]
+                \centering
+                \begin{tabular}{ccc}
+                    & \textbf{G} & \textbf{B}\\
+                    \textbf{G} & 150.000, 150.000 & 80.000, \ulcolor[Blue]{230.000}\\
+                    \textbf{B} & \ulcolor[Red]{230.000}, 80.000 & \ulcolor[Red]{100.000}, \ulcolor[Blue]{100.000}\\
+                \end{tabular}
+            \end{table}
+            No hay nuevo equilibrio, y sigue sin ser un juego del tipo Dilema del Prisionero.
+
+        \subsection*{d)}
+            \subsubsection*{i -}
+                Debería transferir $\$65.000$, porque $210.000 - \frac{(210.000+80.000)}{2}$. Esta es la cantidad que van a recibir los dos si uno se esfuerza más que el otro.
+
+\end{document}
